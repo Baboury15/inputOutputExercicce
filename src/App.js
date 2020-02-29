@@ -10,7 +10,8 @@ class  App extends Component  {
 
   state ={
     current: "enter your name",
-    name : 'ibra'
+    name : 'ibra',
+    showText : false,
   }
 
   currentHadler =(event)=>{
@@ -18,7 +19,17 @@ class  App extends Component  {
     this.setState({
       current: event.target.value
     })
-  }
+}
+
+
+toggleTextHandler =()=>{
+     
+  const doeshowText = this.state.showText 
+
+  this.setState({
+    showText : ! doeshowText
+  })
+}
 
 render(){
 
@@ -27,7 +38,14 @@ render(){
     <div className="App">
      <h1>React Exercice</h1>
      <UserInput current ={this.state.current} changed ={this.currentHadler}/>
-     <UserOutput name = {this.state.name}/>
+   
+
+
+     <button onClick ={this.toggleTextHandler}>Show text </button>
+     { this.state.showText ?
+
+     <UserOutput name = {this.state.name}/> : null
+}
 
     </div>
   );
