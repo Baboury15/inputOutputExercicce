@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Component} from 'react'
+import UserInput from './Components/userInput'
+import UserOutput from './Components/userOutput'
 
-function App() {
+
+class  App extends Component  {
+
+
+  state ={
+    current: "enter your name",
+    name : 'ibra'
+  }
+
+  currentHadler =(event)=>{
+
+    this.setState({
+      current: event.target.value
+    })
+  }
+
+render(){
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>React Exercice</h1>
+     <UserInput current ={this.state.current} changed ={this.currentHadler}/>
+     <UserOutput name = {this.state.name}/>
+
     </div>
   );
+}
 }
 
 export default App;
