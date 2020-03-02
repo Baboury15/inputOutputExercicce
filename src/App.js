@@ -9,8 +9,7 @@ class  App extends Component  {
 
 
   state ={
-    current: "enter your name",
-    name : 'ibra',
+    name : 'enter name ',
     showText : false,
   }
 
@@ -21,6 +20,12 @@ class  App extends Component  {
     })
 }
 
+namechangeHandler =(event)=>{
+  this.setState({
+    name: event.target.value
+
+  })
+}
 
 toggleTextHandler =()=>{
      
@@ -31,20 +36,22 @@ toggleTextHandler =()=>{
   })
 }
 
+
 render(){
 
+  
   
   return (
     <div className="App">
      <h1>React Exercice</h1>
-     <UserInput current ={this.state.current} changed ={this.currentHadler}/>
+     <UserInput current ={this.state.name} changed ={this.namechangeHandler} value ={this.state.name}/>
    
 
 
      <button onClick ={this.toggleTextHandler}>Show text </button>
      { this.state.showText ?
 
-     <UserOutput name = {this.state.name}/> : null
+     <UserOutput name={this.state.name}/> : null
 }
 
     </div>
